@@ -1,0 +1,22 @@
+<html lang="en">
+  <head>
+    <title>Add an item to your wishlist</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+  <head>
+  <body> 
+    <div class='top_bar'>
+    <!-- session name -->
+        <a href='/dashboard'>Home</a>
+        <a href='/'>Logout</a>
+        <h1>Create a New Wish List Item</h1>
+    </div>
+    <div class='left_container'>
+        <form action='add_item' method='post'>
+            {% csrf_token %}
+            <h4>Item/Product: <input type='text' name='item_product'></h4>
+            <input type='submit' name='add_item' value='Add' />
+        </form>
+    </div>
+  </body>
+</html>

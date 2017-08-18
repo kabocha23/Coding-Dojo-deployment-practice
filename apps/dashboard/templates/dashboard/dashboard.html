@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Wish List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+  <head>
+  <body> 
+    <div class='top_bar'>
+    <!-- session name -->
+        <h1>Hello, {{ request.session.name }}!</h1>
+         <a href='/'>Logout</a> 
+    </div>
+    <div class='your_wish_list'>
+        <h2>Your Wish List:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>Item</td>
+                    <td>Added By</td>
+                    <td>Date Added</td>
+                    <td>Action</td>
+                </tr>    
+            </thead>
+            <tbody>
+                {% for items in item_list %}
+                <tr>
+                    <td>{{ items.name }}</td>
+                    <td>{{ items.user_id }}</td>
+                    <td>{{ items.created_at }}</td>
+                    <td><a href='/remove_item'>Remove item from list</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class='other_wish_list'>
+        <h2>Other Users' Wish List:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>Item</td>
+                    <td>Added By</td>
+                    <td>Date Added</td>
+                    <td>Action</td>
+                </tr>    
+            </thead>
+            <tbody>
+                {% for items in item_list %}
+                <tr>
+                    <td>{{ items.name }}</td>
+                    <td>{{ items.user_id }}</td>
+                    <td>{{ items.created_at }}</td>
+                    <td><a href='/remove_item'>Remove item from list</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <a href='/wish_items/create'>Add Item</a>
+  </body>
+</html>
